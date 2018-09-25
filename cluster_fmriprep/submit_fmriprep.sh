@@ -1,0 +1,15 @@
+#USAGE: qsub -v EXPERIMENT=(name of study folder on server) submit_fmriprep.sh
+EXPERIMENT=dnd.01
+
+#subID=(005 006 007 011 012 013 014 016 018 019 021 022 023 027 029 030 031 032 033 034 037)
+#subID=(039 040 041 042 043 044 045 046 048 050 052 057 058 060 062 065 069 070 072 073 074 077 078 080 083 084 087)
+subID=(089 090 091 092 093 094 096 097 098 099 100 102 104 105 107 109 110 111 113 114 115 118 119 121)
+
+#for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20;
+#for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26;
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23;
+	do
+		declare SUB=${subID[$i]}
+		echo $SUB
+		qsub -v EXPERIMENT=${EXPERIMENT} /home/jjc67/linux/scripts/cluster_fmriprep/fmriprep.sh ${SUB}
+done
